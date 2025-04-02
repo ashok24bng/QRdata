@@ -124,42 +124,80 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#" id="homeLink">DataEntryPro</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto logged-out-only">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#how-it-works">How It Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#demo">Demo</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto logged-in-only">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="dashboardNavLink">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="startWorkNavLink">Start Work</a>
-                    </li>
-                </ul>
-                <div class="d-flex" id="authButtons">
-                    <button class="btn btn-outline-light me-2 logged-out-only" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                    <button class="btn btn-primary logged-out-only" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-                    <div class="d-flex logged-in-only" id="userSection">
-                    <button class="btn btn-danger" id="logoutBtn">Logout</button>
-                    </div>
+<!-- In the navigation section (remove logout button from main nav) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#" id="homeLink">DataEntryPro</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto logged-out-only">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how-it-works">How It Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pricing">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#demo">Demo</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto logged-in-only">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="dashboardNavLink">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="startWorkNavLink">Start Work</a>
+                </li>
+            </ul>
+            <div class="d-flex" id="authButtons">
+                <button class="btn btn-outline-light me-2 logged-out-only" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                <button class="btn btn-primary logged-out-only" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                <div class="d-flex logged-in-only" id="userSection">
+                    <span class="navbar-text me-3">Welcome, <span id="usernameDisplay">User</span></span>
                 </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- In the dashboard sidebar (add logout button here) -->
+<div class="col-md-3 col-lg-2 dashboard-sidebar p-0">
+    <div class="p-4">
+        <div class="text-center mb-4">
+            <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" alt="Profile">
+            <h5 id="dashboardUsername">John Doe</h5>
+            <p class="text-white-50 small" id="userPlanDisplay">Free Plan</p>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active text-white" href="#" data-section="dashboard"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="startWork"><i class="fas fa-keyboard me-2"></i> Start Work</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="wallet"><i class="fas fa-wallet me-2"></i> Wallet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="bankDetails"><i class="fas fa-university me-2"></i> Bank Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="withdrawals"><i class="fas fa-money-bill-wave me-2"></i> Withdrawals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="referrals"><i class="fas fa-user-friends me-2"></i> Referrals</a>
+            </li>
+            <li class="nav-item mt-3">
+                <button class="btn btn-danger w-100" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
+            </li>
+        </ul>
+    </div>
+</div>
             </div>
         </div>
     </nav>
@@ -701,121 +739,342 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simulate user authentication state
-        let isLoggedIn = false;
-        let currentUser = null;
+        <script>
+    // Simulate user authentication state
+    let isLoggedIn = false;
+    let currentUser = null;
+    
+    // DOM Elements
+    const authButtons = document.getElementById('authButtons');
+    const userSection = document.getElementById('userSection');
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const homeLink = document.getElementById('homeLink');
+    const dashboardNavLink = document.getElementById('dashboardNavLink');
+    const startWorkNavLink = document.getElementById('startWorkNavLink');
+    const backToDashboard = document.getElementById('backToDashboard');
+    const dashboardPage = document.getElementById('dashboardPage');
+    const startWorkPage = document.getElementById('startWorkPage');
+    const landingPage = document.getElementById('landingPage');
+    
+    // Update UI based on login state
+    function updateUI() {
+        if (isLoggedIn) {
+            document.body.classList.add('logged-in');
+            showDashboardPage();
+            updateUserData();
+        } else {
+            document.body.classList.remove('logged-in');
+            showLandingPage();
+        }
+    }
+    
+    function showLandingPage() {
+        landingPage.style.display = 'block';
+        dashboardPage.style.display = 'none';
+        startWorkPage.style.display = 'none';
+    }
+    
+    function showDashboardPage() {
+        landingPage.style.display = 'none';
+        dashboardPage.style.display = 'block';
+        startWorkPage.style.display = 'none';
+        updateDashboardData();
+    }
+    
+    function showStartWorkPage() {
+        landingPage.style.display = 'none';
+        dashboardPage.style.display = 'none';
+        startWorkPage.style.display = 'block';
+        updateWorkPageData();
+    }
+    
+    // Login function
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
         
-        // DOM Elements
-        const authButtons = document.getElementById('authButtons');
-        const userSection = document.getElementById('userSection');
-        const usernameDisplay = document.getElementById('usernameDisplay');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const homeLink = document.getElementById('homeLink');
-        const dashboardNavLink = document.getElementById('dashboardNavLink');
-        const startWorkNavLink = document.getElementById('startWorkNavLink');
-        const backToDashboard = document.getElementById('backToDashboard');
-        const dashboardPage = document.getElementById('dashboardPage');
-        const startWorkPage = document.getElementById('startWorkPage');
-        const landingPage = document.getElementById('landingPage');
-        
-        // Update UI based on login state
-        function updateUI() {
-            if (isLoggedIn) {
-                document.body.classList.add('logged-in');
-                showDashboardPage();
-                updateUserData();
-            } else {
-                document.body.classList.remove('logged-in');
-                showLandingPage();
+        // Simulate login (in a real app, this would be an API call)
+        if (email && password) {
+            isLoggedIn = true;
+            currentUser = {
+                name: email.split('@')[0],
+                email: email,
+                plan: 'free',
+                entries: 0,
+                earnings: 0,
+                withdrawals: 0,
+                referrals: 0,
+                activeReferrals: 0,
+                referralBonus: 0,
+                earningWallet: 0,
+                bonusWallet: 0,
+                hasBankDetails: false,
+                dataEntryHistory: [],
+                entriesToday: 0,
+                lastEntryDate: null
+            };
+            
+            // Update UI
+            updateUI();
+            
+            // Close modal
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
             }
         }
+    });
+    
+    // Register function
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
         
-        function showLandingPage() {
-            landingPage.style.display = 'block';
-            dashboardPage.style.display = 'none';
-            startWorkPage.style.display = 'none';
-        }
-        
-        function showDashboardPage() {
-            landingPage.style.display = 'none';
-            dashboardPage.style.display = 'block';
-            startWorkPage.style.display = 'none';
-            updateDashboardData();
-        }
-        
-        function showStartWorkPage() {
-            landingPage.style.display = 'none';
-            dashboardPage.style.display = 'none';
-            startWorkPage.style.display = 'block';
-            updateWorkPageData();
-        }
-        
-        // Login function
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
+        // Simulate registration (in a real app, this would be an API call)
+        if (name && email && password) {
+            isLoggedIn = true;
+            currentUser = {
+                name: name,
+                email: email,
+                plan: 'free',
+                entries: 0,
+                earnings: 0,
+                withdrawals: 0,
+                referrals: 0,
+                activeReferrals: 0,
+                referralBonus: 0,
+                earningWallet: 0,
+                bonusWallet: 0,
+                hasBankDetails: false,
+                dataEntryHistory: [],
+                entriesToday: 0,
+                lastEntryDate: null
+            };
             
-            // Simulate login (in a real app, this would be an API call)
-            if (email && password) {
-                isLoggedIn = true;
-                currentUser = {
-                    name: email.split('@')[0],
-                    email: email,
-                    plan: 'free',
-                    entries: 0,
-                    earnings: 0,
-                    withdrawals: 0,
-                    referrals: 0,
-                    activeReferrals: 0,
-                    referralBonus: 0,
-                    earningWallet: 0,
-                    bonusWallet: 0,
-                    hasBankDetails: false,
-                    dataEntryHistory: [],
-                    entriesToday: 0,
-                    lastEntryDate: null
-                };
-                
-                // Update UI
-                updateUI();
-                
-                // Close modal
-                bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            // Update UI
+            updateUI();
+            
+            // Close modal
+            const registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+            if (registerModal) {
+                registerModal.hide();
+            }
+        }
+    });
+    
+    // Logout function
+    logoutBtn.addEventListener('click', function() {
+        isLoggedIn = false;
+        currentUser = null;
+        updateUI();
+    });
+    
+    // Navigation
+    homeLink.addEventListener('click', function(e) {
+        if (isLoggedIn) {
+            e.preventDefault();
+            showDashboardPage();
+        }
+    });
+    
+    dashboardNavLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showDashboardPage();
+    });
+    
+    startWorkNavLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showStartWorkPage();
+    });
+    
+    backToDashboard.addEventListener('click', function(e) {
+        e.preventDefault();
+        showDashboardPage();
+    });
+    
+    function updateUserData() {
+        if (!currentUser) return;
+        
+        // Update user display
+        document.getElementById('usernameDisplay').textContent = currentUser.name;
+        document.getElementById('dashboardUsername').textContent = currentUser.name;
+        document.getElementById('workPageUsername').textContent = currentUser.name;
+        
+        // Update plan display
+        const planDisplay = currentUser.plan === 'free' ? 'Free Plan' : 
+                          currentUser.plan === 'premium3' ? 'Premium Plan (3 months)' : 'Professional Plan (1 year)';
+        document.getElementById('userPlanDisplay').textContent = planDisplay;
+        document.getElementById('workPagePlan').textContent = planDisplay;
+        
+        // Update rate badge
+        const rate = currentUser.plan === 'free' ? '₹0.50' : 
+                     currentUser.plan === 'premium3' ? '₹1' : '₹3';
+        document.getElementById('currentRateBadge').textContent = `Rate: ${rate} per entry`;
+        
+        // Update max daily entries
+        const maxEntries = currentUser.plan === 'free' ? 10 : 50;
+        document.getElementById('maxDailyEntries').textContent = maxEntries;
+        document.getElementById('entriesCounter').textContent = `Entries today: ${currentUser.entriesToday}/${maxEntries}`;
+        
+        // Update progress bar
+        const progressPercent = (currentUser.entriesToday / maxEntries) * 100;
+        document.getElementById('dailyProgressBar').style.width = `${progressPercent}%`;
+    }
+    
+    function updateDashboardData() {
+        if (!currentUser) return;
+        
+        updateUserData();
+        
+        // Update dashboard stats
+        document.getElementById('totalEntries').textContent = currentUser.entries;
+        document.getElementById('totalEarnings').textContent = `₹${currentUser.earnings}`;
+        document.getElementById('totalWithdrawals').textContent = `₹${currentUser.withdrawals}`;
+        document.getElementById('earningWalletBalance').textContent = `₹${currentUser.earningWallet}`;
+        document.getElementById('bonusWalletBalance').textContent = `₹${currentUser.bonusWallet}`;
+        document.getElementById('totalReferrals').textContent = currentUser.referrals;
+        document.getElementById('activeReferrals').textContent = currentUser.activeReferrals;
+        document.getElementById('totalReferralBonus').textContent = `₹${currentUser.referralBonus}`;
+        document.getElementById('entriesCompleted').textContent = currentUser.entriesToday;
+        
+        // Calculate daily earnings
+        const rate = currentUser.plan === 'free' ? 0.5 : 
+                     currentUser.plan === 'premium3' ? 1 : 3;
+        document.getElementById('dailyEarnings').textContent = `₹${(currentUser.entriesToday * rate).toFixed(2)}`;
+        
+        // Update data entry earnings table
+        const dataEntryEarnings = document.getElementById('dataEntryEarnings');
+        if (currentUser.dataEntryHistory.length === 0) {
+            dataEntryEarnings.innerHTML = '<tr><td colspan="5" class="text-center">No entries yet</td></tr>';
+        } else {
+            dataEntryEarnings.innerHTML = currentUser.dataEntryHistory.map(entry => `
+                <tr>
+                    <td>${entry.date}</td>
+                    <td>${entry.count}</td>
+                    <td>₹${entry.rate} per entry</td>
+                    <td>₹${entry.amount}</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                </tr>
+            `).join('');
+        }
+    }
+    
+    function updateWorkPageData() {
+        if (!currentUser) return;
+        
+        updateUserData();
+        
+        // Enable/disable submit button based on daily limit
+        const maxEntries = currentUser.plan === 'free' ? 10 : 50;
+        document.getElementById('submitEntryBtn').disabled = currentUser.entriesToday >= maxEntries;
+    }
+    
+    // Data entry form submission
+    document.getElementById('dataEntryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Check if user has reached daily limit
+        const maxEntries = currentUser.plan === 'free' ? 10 : 50;
+        if (currentUser.entriesToday >= maxEntries) {
+            alert(`You've reached your daily limit of ${maxEntries} entries.`);
+            return;
+        }
+        
+        // Validate form
+        let hasError = false;
+        const inputs = this.querySelectorAll('input[required]');
+        
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.classList.add('error-highlight');
+                hasError = true;
+            } else {
+                input.classList.remove('error-highlight');
             }
         });
         
-        // Register function
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
+        if (hasError) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        // Get current date
+        const today = new Date();
+        const entryDate = today.toLocaleDateString();
+        
+        // Calculate earnings based on plan
+        const rate = currentUser.plan === 'free' ? 0.5 : 
+                     currentUser.plan === 'premium3' ? 1 : 3;
+        const earnings = rate;
+        
+        // Update user data
+        currentUser.entries++;
+        currentUser.entriesToday++;
+        currentUser.earningWallet += earnings;
+        currentUser.earnings += earnings;
+        currentUser.lastEntryDate = today;
+        
+        // Add to data entry history
+        const existingEntry = currentUser.dataEntryHistory.find(e => e.date === entryDate);
+        if (existingEntry) {
+            existingEntry.count++;
+            existingEntry.amount += earnings;
+        } else {
+            currentUser.dataEntryHistory.push({
+                date: entryDate,
+                count: 1,
+                rate: rate,
+                amount: earnings
+            });
+        }
+        
+        // Show ad for free plan users
+        if (currentUser.plan === 'free') {
+            const adModal = new bootstrap.Modal(document.getElementById('adModal'));
+            const adCountdown = document.getElementById('adCountdown');
+            const adProgress = document.getElementById('adProgress');
+            const continueBtn = document.getElementById('continueAfterAdBtn');
             
-            // Simulate registration (in a real app, this would be an API call)
-            if (name && email && password) {
-                isLoggedIn = true;
-                currentUser = {
-                    name: name,
-                    email: email,
-                    plan: 'free',
-                    entries: 0,
-                    earnings: 0,
-                    withdrawals: 0,
-                    referrals: 0,
-                    activeReferrals: 0,
-                    referralBonus: 0,
-                    earningWallet: 0,
-                    bonusWallet: 0,
-                    hasBankDetails: false,
-                    dataEntryHistory: [],
-                    entriesToday: 0,
-                    lastEntryDate: null
-                };
+            let seconds = 60;
+            adModal.show();
+            
+            const timer = setInterval(() => {
+                seconds--;
+                adCountdown.textContent = `${seconds} seconds remaining`;
+                adProgress.style.width = `${(60 - seconds) / 60 * 100}%`;
                 
-                // Update UI
-                updateUI();
-                
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    continueBtn.disabled = false;
+                    adCountdown.textContent = 'Ad completed!';
+                }
+            }, 1000);
+            
+            continueBtn.addEventListener('click', function() {
+                adModal.hide();
+                // Reset form for next entry
+                document.getElementById('dataEntryForm').reset();
+                updateWorkPageData();
+            }, { once: true });
+        } else {
+            // Reset form for next entry
+            this.reset();
+            updateWorkPageData();
+        }
+        
+        // Update dashboard data if visible
+        if (dashboardPage.style.display === 'block') {
+            updateDashboardData();
+        }
+    });
+    
+    // Initialize UI
+    updateUI();
+</script>        
                 // Close modal
                 bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
             }
