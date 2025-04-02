@@ -3,1038 +3,746 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataEntryPro | Earn Money Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>DataEntryPro - Earn Money Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4cc9f0;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4bb543;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --primary-color: #4e73df;
+            --secondary-color: #1cc88a;
+            --dark-color: #5a5c69;
+            --light-color: #f8f9fc;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #f5f7ff;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--light-color);
         }
         
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .auth-buttons .btn {
-            margin-left: 15px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
             color: white;
+            padding: 5rem 0;
+        }
+        
+        .feature-card {
+            border-radius: 10px;
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
         }
         
         .btn-primary {
-            background: var(--primary);
-            color: white;
-            border: 2px solid var(--primary);
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
         
-        .btn-primary:hover {
-            background: var(--secondary);
-            border-color: var(--secondary);
+        .btn-success {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
         }
         
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 80px;
-            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            color: #555;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        
-        .hero-image {
-            max-width: 800px;
-            margin: 40px auto 0;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            margin-top: 40px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Jobs Section */
-        .jobs {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
-        }
-        
-        .job-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .job-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .job-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .job-card i {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .job-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .job-card p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .earnings {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        
-        .earnings h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        /* Demo Section */
-        .demo {
-            padding: 80px 0;
-            background: white;
-        }
-        
-        .video-container {
-            max-width: 800px;
-            margin: 40px auto 0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .video-container iframe {
-            width: 100%;
-            height: 450px;
-            display: block;
-        }
-        
-        /* Auth Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-        }
-        
-        .modal h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
+        .pricing-card {
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background: var(--secondary);
-        }
-        
-        .auth-toggle {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-        }
-        
-        .auth-toggle a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        /* Dashboard (Visible when logged in) */
-        .dashboard {
-            display: none;
-            padding: 150px 0 80px;
-        }
-        
-        .welcome-message {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .welcome-message h1 {
-            font-size: 36px;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .welcome-message p {
-            color: #666;
-            font-size: 18px;
-        }
-        
-        .dashboard-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .dashboard-card {
-            background: white;
             border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
+            transition: all 0.3s;
         }
         
-        .dashboard-card i {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .pricing-card:hover {
+            transform: scale(1.03);
         }
         
-        .dashboard-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--dark);
+        .pricing-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
         
-        .dashboard-card p {
-            color: #666;
-            margin-bottom: 20px;
+        .dashboard-sidebar {
+            background-color: var(--primary-color);
+            min-height: 100vh;
+            color: white;
         }
         
-        /* Start Work Section */
-        .start-work {
-            display: none;
-            padding: 80px 0;
-            background: white;
+        .dashboard-content {
+            background-color: var(--light-color);
         }
         
-        .work-instructions {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .work-instructions h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .work-instructions ol {
-            margin-left: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .work-instructions li {
-            margin-bottom: 15px;
-            color: #555;
-        }
-        
-        .data-entry-form {
-            background: var(--light);
-            padding: 30px;
+        .wallet-card {
             border-radius: 10px;
-            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        .data-entry-form h3 {
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--accent);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #bbb;
-            font-size: 14px;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .video-container iframe {
-                height: 300px;
-            }
+        .error-highlight {
+            border: 2px solid #e74a3b !important;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-keyboard"></i>
-                    <span>DataEntryPro</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#jobs">Jobs & Earnings</a></li>
-                    <li><a href="#demo">How It Works</a></li>
+            <a class="navbar-brand" href="#">DataEntryPro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
                 </ul>
-                <div class="auth-buttons">
-                    <a href="#" class="btn btn-outline" id="login-btn">Login</a>
-                    <a href="#" class="btn btn-primary" id="register-btn">Register</a>
+                <div class="d-flex" id="authButtons">
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                 </div>
-            </nav>
+                <div class="d-flex d-none" id="userSection">
+                    <span class="navbar-text me-3">Welcome, <span id="usernameDisplay">User</span></span>
+                    <button class="btn btn-outline-light me-2" id="dashboardBtn">Dashboard</button>
+                    <button class="btn btn-danger" id="logoutBtn">Logout</button>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero-section text-center">
         <div class="container">
-            <h1>Earn Money With Simple Data Entry Jobs</h1>
-            <p>Work from home, flexible hours, and get paid weekly. No experience required!</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary" id="start-work-btn">Start Earning Today</a>
-                <a href="#demo" class="btn btn-outline">See How It Works</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Person working on laptop">
-            </div>
+            <h1 class="display-4 fw-bold mb-4">Earn Money with Data Entry</h1>
+            <p class="lead mb-5">Join thousands of people earning money from home by completing simple data entry tasks</p>
+            <button class="btn btn-light btn-lg me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Get Started</button>
+            <button class="btn btn-outline-light btn-lg" id="startWorkBtn" style="display: none;">Start Work</button>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- About Us Section -->
+    <section id="about" class="py-5">
         <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-                <p>We connect businesses with remote workers to complete simple data tasks efficiently</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Your Trusted Partner in Remote Data Entry</h3>
-                    <p>DataEntryPro was founded in 2015 with a mission to create flexible work opportunities for people around the world while helping businesses with their data processing needs.</p>
-                    <p>Over the years, we've helped thousands of individuals earn supplemental income from the comfort of their homes, while maintaining the highest standards of data accuracy and security.</p>
-                    <p>Our platform is designed to be simple, transparent, and rewarding for both our workers and clients.</p>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">About Us</h2>
+                    <p class="lead">DataEntryPro is a leading platform connecting businesses with remote data entry professionals.</p>
+                    <p>Founded in 2015, we've helped over 50,000 people earn supplemental income from home while providing businesses with accurate data entry services.</p>
+                    <p>Our mission is to create flexible earning opportunities for anyone with basic computer skills and an internet connection.</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team working together">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="About Us" class="img-fluid rounded shadow">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Jobs Section -->
-    <section class="jobs" id="jobs">
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
         <div class="container">
-            <div class="section-title">
-                <h2>Available Jobs & Earnings</h2>
-                <p>Choose from various data entry tasks based on your skills and availability</p>
-            </div>
-            <div class="job-cards">
-                <div class="job-card">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Basic Data Entry</h3>
-                    <p>Simple typing tasks including form filling, document processing, and spreadsheet updates.</p>
-                    <div class="earnings">
-                        <h4>Earnings Potential</h4>
-                        <p>$5 - $15 per hour based on speed and accuracy</p>
+            <h2 class="text-center fw-bold mb-5">How It Works</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-gradient text-white rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-user-plus fa-2x"></i>
+                            </div>
+                            <h5>1. Register</h5>
+                            <p>Create your free account and complete your profile</p>
+                        </div>
                     </div>
                 </div>
-                <div class="job-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Data Collection</h3>
-                    <p>Research and compile information from various online sources into organized formats.</p>
-                    <div class="earnings">
-                        <h4>Earnings Potential</h4>
-                        <p>$8 - $20 per hour depending on complexity</p>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-gradient text-white rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-tasks fa-2x"></i>
+                            </div>
+                            <h5>2. Complete Tasks</h5>
+                            <p>Enter data accurately according to the instructions</p>
+                        </div>
                     </div>
                 </div>
-                <div class="job-card">
-                    <i class="fas fa-check-double"></i>
-                    <h3>Data Verification</h3>
-                    <p>Review and validate existing data for accuracy and completeness.</p>
-                    <div class="earnings">
-                        <h4>Earnings Potential</h4>
-                        <p>$10 - $25 per hour based on expertise</p>
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-gradient text-white rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-money-bill-wave fa-2x"></i>
+                            </div>
+                            <h5>3. Earn Money</h5>
+                            <p>Get paid for each approved data entry submission</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section class="demo" id="demo">
-        <div class="container">
-            <div class="section-title">
-                <h2>See How It Works</h2>
-                <p>Watch our demo video to understand the data entry process and our platform</p>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Login Modal -->
-    <div class="modal" id="login-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Login to Your Account</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required>
+            
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Earning Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Free Plan
+                                    <span class="badge bg-primary rounded-pill">₹5 per entry</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Premium Plan (3 months)
+                                    <span class="badge bg-primary rounded-pill">₹7 per entry</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Premium Plan (1 year)
+                                    <span class="badge bg-primary rounded-pill">₹10 per entry</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Referral Bonus
+                                    <span class="badge bg-success rounded-pill">10% of premium plans</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
-            <div class="auth-toggle">
-                Don't have an account? <a href="#" id="show-register">Register</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="modal" id="register-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Create Your Account</h2>
-            <form id="register-form">
-                <div class="form-group">
-                    <label for="register-name">Full Name</label>
-                    <input type="text" id="register-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Email</label>
-                    <input type="email" id="register-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-password">Password</label>
-                    <input type="password" id="register-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-confirm">Confirm Password</label>
-                    <input type="password" id="register-confirm" required>
-                </div>
-                <button type="submit" class="submit-btn">Register</button>
-            </form>
-            <div class="auth-toggle">
-                Already have an account? <a href="#" id="show-login">Login</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dashboard (Visible after login) -->
-    <section class="dashboard" id="dashboard">
-        <div class="container">
-            <div class="welcome-message">
-                <h1>Welcome Back, <span id="user-name">User</span>!</h1>
-                <p>Ready to start earning? Choose an option below to begin.</p>
-            </div>
-            <div class="dashboard-cards">
-                <div class="dashboard-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Your Earnings</h3>
-                    <p>View your current balance and payment history</p>
-                    <a href="#" class="btn btn-outline">View Dashboard</a>
-                </div>
-                <div class="dashboard-card">
-                    <i class="fas fa-tasks"></i>
-                    <h3>Available Jobs</h3>
-                    <p>Browse and select from available data entry tasks</p>
-                    <a href="#" class="btn btn-outline">View Jobs</a>
-                </div>
-                <div class="dashboard-card">
-                    <i class="fas fa-play-circle"></i>
-                    <h3>Start Working</h3>
-                    <p>Begin your next data entry assignment now</p>
-                    <a href="#" class="btn btn-primary" id="dashboard-start-work">Start Work</a>
-                    <div class="row">
-    <!-- Total Entries -->
-    <div class="col-md-4">
-        <div class="card stat-card">
-            <div class="card-body">
-                <h5 class="card-title">Total Entries</h5>
-                <h2 class="text-primary">{{ $totalEntries }}</h2>
-                <p class="text-muted">All-time submissions</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Total Earnings -->
-    <div class="col-md-4">
-        <div class="card stat-card">
-            <div class="card-body">
-                <h5 class="card-title">Total Earnings</h5>
-                <h2 class="text-success">${{ number_format($totalEarnings, 2) }}</h2>
-                <p class="text-muted">Lifetime earnings</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Total Withdrawal -->
-    <div class="col-md-4">
-        <div class="card stat-card">
-            <div class="card-body">
-                <h5 class="card-title">Total Withdrawn</h5>
-                <h2 class="text-info">${{ number_format($totalWithdrawal, 2) }}</h2>
-                <p class="text-muted">Amount withdrawn</p>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Payment Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Minimum withdrawal: ₹300 (Earning Wallet)</li>
+                                <li class="list-group-item">No minimum for Bonus Wallet</li>
+                                <li class="list-group-item">Withdrawals processed within 3-5 business days</li>
+                                <li class="list-group-item">Bank details required for withdrawal</li>
+                                <li class="list-group-item">Track withdrawal status in dashboard</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Start Work Section (Visible after login) -->
-    <section class="start-work" id="start-work-section">
+    <!-- Demo Video Section -->
+    <section id="demo" class="py-5">
         <div class="container">
-            <div class="work-instructions">
-                <h2>Data Entry Task Instructions</h2>
-                <ol>
-                    <li>Review the source document provided below carefully</li>
-                    <li>Enter all information exactly as shown into the corresponding fields</li>
-                    <li>Pay special attention to numbers, dates, and proper names</li>
-                    <li>Double-check your entries before submitting</li>
-                    <li>Click "Submit" when you've completed all fields</li>
-                </ol>
-                
-                <div class="data-entry-form">
-                    <h3>Data Entry Form</h3>
-                    <form id="task-form">
-                        <div class="form-group">
-                            <label for="field1">Full Name</label>
-                            <input type="text" id="field1" required>
+            <h2 class="text-center fw-bold mb-5">See How It Works</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/example" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Choose Your Plan</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card pricing-card mb-4">
+                        <div class="card-header pricing-header text-center py-3">
+                            <h4 class="my-0 fw-normal">Free</h4>
                         </div>
-                        <div class="form-group">
-                            <label for="field2">Email Address</label>
-                            <input type="email" id="field2" required>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title text-center">₹0<small class="text-muted fw-light">/mo</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i> ₹5 per entry</li>
+                                <li><i class="fas fa-check text-success me-2"></i> 60-second ads after each entry</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Basic support</li>
+                                <li><i class="fas fa-times text-danger me-2"></i> No referral bonus</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-outline-primary w-100">Current Plan</button>
                         </div>
-                        <div class="form-group">
-                            <label for="field3">Phone Number</label>
-                            <input type="tel" id="field3" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card pricing-card mb-4">
+                        <div class="card-header pricing-header text-center py-3">
+                            <h4 class="my-0 fw-normal">Premium</h4>
                         </div>
-                        <div class="form-group">
-                            <label for="field4">Mailing Address</label>
-                            <input type="text" id="field4" required>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title text-center">₹2999<small class="text-muted fw-light">/3mo</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i> ₹7 per entry</li>
+                                <li><i class="fas fa-check text-success me-2"></i> No ads for 3 months</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Priority support</li>
+                                <li><i class="fas fa-check text-success me-2"></i> 10% referral bonus</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-primary w-100">Upgrade</button>
                         </div>
-                        <div class="form-group">
-                            <label for="field5">Date of Birth</label>
-                            <input type="date" id="field5" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card pricing-card mb-4">
+                        <div class="card-header pricing-header text-center py-3">
+                            <h4 class="my-0 fw-normal">Professional</h4>
                         </div>
-                        <button type="submit" class="submit-btn">Submit Entry</button>
-                    </form>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title text-center">₹9999<small class="text-muted fw-light">/year</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i> ₹10 per entry</li>
+                                <li><i class="fas fa-check text-success me-2"></i> No ads for 1 year</li>
+                                <li><i class="fas fa-check text-success me-2"></i> 24/7 priority support</li>
+                                <li><i class="fas fa-check text-success me-2"></i> 10% referral bonus</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-primary w-100">Upgrade</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="bg-dark text-white py-4">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>DataEntryPro</h3>
-                    <p>Providing flexible work opportunities since 2015.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>DataEntryPro</h5>
+                    <p>Earn money from home with simple data entry tasks.</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#jobs">Jobs & Earnings</a></li>
-                        <li><a href="#demo">How It Works</a></li>
-                        <li><a href="#">FAQ</a></li>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="text-white">About Us</a></li>
+                        <li><a href="#how-it-works" class="text-white">How It Works</a></li>
+                        <li><a href="#pricing" class="text-white">Pricing</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Payment Help</a></li>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> support@dataentrypro.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +91 1234567890</li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 DataEntryPro. All rights reserved.</p>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 DataEntryPro. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // DOM Elements
-        const loginBtn = document.getElementById('login-btn');
-        const registerBtn = document.getElementById('register-btn');
-        const startWorkBtn = document.getElementById('start-work-btn');
-        const loginModal = document.getElementById('login-modal');
-        const registerModal = document.getElementById('register-modal');
-        const closeModalBtns = document.querySelectorAll('.close-modal');
-        const showRegister = document.getElementById('show-register');
-        const showLogin = document.getElementById('show-login');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const dashboard = document.getElementById('dashboard');
-        const startWorkSection = document.getElementById('start-work-section');
-        const dashboardStartWork = document.getElementById('dashboard-start-work');
-        
-        // Check if user is logged in (simulated with localStorage)
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        const userName = localStorage.getItem('userName') || 'User';
-        
-        if (isLoggedIn) {
-            // Hide auth buttons
-            document.querySelector('.auth-buttons').style.display = 'none';
-            // Show dashboard
-            dashboard.style.display = 'block';
-            document.getElementById('user-name').textContent = userName;
-            // Hide hero section
-            document.querySelector('.hero').style.display = 'none';
-        }
-        
-        // Event Listeners
-        loginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginModal.style.display = 'flex';
-        });
-        
-        registerBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerModal.style.display = 'flex';
-        });
-        
-        startWorkBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (isLoggedIn) {
-                startWorkSection.style.display = 'block';
-                window.scrollTo({
-                    top: document.getElementById('start-work-section').offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            } else {
-                loginModal.style.display = 'flex';
-            }
-        });
-        
-        dashboardStartWork.addEventListener('click', (e) => {
-            e.preventDefault();
-            startWorkSection.style.display = 'block';
-            window.scrollTo({
-                top: document.getElementById('start-work-section').offsetTop - 80,
-                behavior: 'smooth'
-            });
-        });
-        
-        closeModalBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                loginModal.style.display = 'none';
-                registerModal.style.display = 'none';
-            });
-        });
-        
-        showRegister.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginModal.style.display = 'none';
-            registerModal.style.display = 'flex';
-        });
-        
-        showLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerModal.style.display = 'none';
-            loginModal.style.display = 'flex';
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.style.display = 'none';
-            }
-            if (e.target === registerModal) {
-                registerModal.style.display = 'none';
-            }
-        });
-        
-        // Form Submissions
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            
-            // Simulate login (in a real app, this would be an API call)
-            if (email && password) {
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userName', email.split('@')[0]);
-                
-                // Hide modal and auth buttons
-                loginModal.style.display = 'none';
-                document.querySelector('.auth-buttons').style.display = 'none';
-                
-                // Show dashboard and hide hero
-                dashboard.style.display = 'block';
-                document.querySelector('.hero').style.display = 'none';
-                document.getElementById('user-name').textContent = email.split('@')[0];
-                
-                // Scroll to dashboard
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                alert('Please enter both email and password');
-            }
-        });
-        
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const confirm = document.getElementById('register-confirm').value;
-            
-            if (password !== confirm) {
-                alert('Passwords do not match');
-                return;
-            }
-            
-            if (name && email && password) {
-                // Simulate registration (in a real app, this would be an API call)
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userName', name);
-                
-                // Hide modal and auth buttons
-                registerModal.style.display = 'none';
-                document.querySelector('.auth-buttons').style.display = 'none';
-                
-                // Show dashboard and hide hero
-                dashboard.style.display = 'block';
-                document.querySelector('.hero').style.display = 'none';
-                document.getElementById('user-name').textContent = name;
-                
-                // Scroll to dashboard
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                alert('Please fill in all fields');
-            }
-        });
-        
-        // Task form submission
-        document.getElementById('task-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Task submitted successfully! Thank you for your work.');
-            // Reset form
-            e.target.reset();
-        });
-    </script>
-</body>
-</html>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login to Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="registerPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="registerConfirmPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="referralCode" class="form-label">Referral Code (Optional)</label>
+                            <input type="text" class="form-control" id="referralCode">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms and Conditions</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div class="modal fade" id="dashboardModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dashboard</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="row g-0">
+                        <div class="col-md-3 dashboard-sidebar p-4">
+                            <div class="text-center mb-4">
+                                <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" alt="Profile">
+                                <h5 id="dashboardUsername">John Doe</h5>
+                                <p class="text-white-50 small">Free Plan</p>
+                            </div>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active text-white" href="#" data-section="dashboard"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#" data-section="startWork"><i class="fas fa-keyboard me-2"></i> Start Work</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#" data-section="wallet"><i class="fas fa-wallet me-2"></i> Wallet</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#" data-section="bankDetails"><i class="fas fa-university me-2"></i> Bank Details</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#" data-section="withdrawals"><i class="fas fa-money-bill-wave me-2"></i> Withdrawals</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#" data-section="referrals"><i class="fas fa-user-friends me-2"></i> Referrals</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9 dashboard-content p-4">
+                            <!-- Dashboard Section -->
+                            <div id="dashboardSection">
+                                <h4 class="mb-4">Overview</h4>
+                                <div class="row mb-4">
+                                    <div class="col-md-4">
+                                        <div class="card bg-primary text-white mb-4">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Total Entries</h6>
+                                                <h2 class="mb-0" id="totalEntries">0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card bg-success text-white mb-4">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Total Earnings</h6>
+                                                <h2 class="mb-0" id="totalEarnings">₹0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card bg-info text-white mb-4">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Total Withdrawals</h6>
+                                                <h2 class="mb-0" id="totalWithdrawals">₹0</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Referral Program</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Earn 10% of any premium plan purchased by your referrals!</p>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" id="referralLink" value="https://dataentrypro.com/ref/username123" readonly>
+                                            <button class="btn btn-primary" type="button" id="copyReferralBtn">Copy</button>
+                                        </div>
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle me-2"></i> Share your referral link with friends and earn bonuses when they join with premium plans.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Recent Activity</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Activity</th>
+                                                        <th>Amount</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="recentActivity">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No recent activity</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Start Work Section -->
+                            <div id="startWorkSection" style="display: none;">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4>Data Entry Form</h4>
+                                    <div class="badge bg-primary">Current Rate: ₹5 per entry</div>
+                                </div>
+                                <div class="alert alert-info mb-4">
+                                    <i class="fas fa-info-circle me-2"></i> Please enter the information accurately. Errors will be highlighted in red.
+                                </div>
+                                <form id="dataEntryForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Company Name (Enter the full legal name of the company)</label>
+                                            <input type="text" class="form-control" data-field="companyName">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">City (Enter the city where the company is located)</label>
+                                            <input type="text" class="form-control" data-field="city">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Country (Enter the country where the company is based)</label>
+                                            <input type="text" class="form-control" data-field="country">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Zip Code (Enter the postal/zip code of the company)</label>
+                                            <input type="text" class="form-control" data-field="zipCode">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business ID (Enter the official business registration ID)</label>
+                                            <input type="text" class="form-control" data-field="businessId">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Email (Enter the company's official email address)</label>
+                                            <input type="email" class="form-control" data-field="email">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Website (Enter the company's website URL)</label>
+                                            <input type="url" class="form-control" data-field="website">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Department (Enter the specific department if applicable)</label>
+                                            <input type="text" class="form-control" data-field="department">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Job Function (Enter the primary job function)</label>
+                                            <input type="text" class="form-control" data-field="jobFunction">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Phone Number (Enter the company's main phone number)</label>
+                                            <input type="tel" class="form-control" data-field="phoneNumber">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Mobile Number (Enter the company's mobile number if available)</label>
+                                            <input type="tel" class="form-control" data-field="mobileNumber">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Industry (Enter the industry the company operates in)</label>
+                                            <input type="text" class="form-control" data-field="industry">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Days (Enter the days the company operates, e.g., Mon-Fri)</label>
+                                            <input type="text" class="form-control" data-field="businessDays">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Services Offered (List the main services offered by the company)</label>
+                                            <input type="text" class="form-control" data-field="servicesOffered">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Products Offered (List the main products offered by the company)</label>
+                                            <input type="text" class="form-control" data-field="productsOffered">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Company Description (Brief description of the company)</label>
+                                            <input type="text" class="form-control" data-field="companyDescription">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Specialization (Company's area of specialization)</label>
+                                            <input type="text" class="form-control" data-field="specialization">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Date of Establishment (When the company was founded)</label>
+                                            <input type="date" class="form-control" data-field="establishmentDate">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Address (Full physical address of the company)</label>
+                                        <textarea class="form-control" rows="2" data-field="address"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Tax ID Number (Company's tax identification number)</label>
+                                        <input type="text" class="form-control" data-field="taxId">
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary">Submit Entry</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Wallet Section -->
+                            <div id="walletSection" style="display: none;">
+                                <h4 class="mb-4">My Wallet</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card wallet-card border-primary">
+                                            <div class="card-header bg-primary text-white">
+                                                <h5 class="mb-0">Earning Wallet</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <h2 class="card-title" id="earningWalletBalance">₹0</h2>
+                                                <p class="card-text">Minimum withdrawal: ₹300</p>
+                                                <button class="btn btn-primary" id="withdrawEarningsBtn" disabled>Withdraw</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card wallet-card border-success">
+                                            <div class="card-header bg-success text-white">
+                                                <h5 class="mb-0">Bonus Wallet</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <h2 class="card-title" id="bonusWalletBalance">₹0</h2>
+                                                <p class="card-text">No minimum withdrawal</p>
+                                                <button class="btn btn-success" id="withdrawBonusBtn" disabled>Withdraw</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">Transaction History</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Description</th>
+                                                        <th>Amount</th>
+                                                        <th>Wallet</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="walletHistory">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No transactions yet</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bank Details Section -->
+                            <div id="bankDetailsSection" style="display: none;">
+                                <h4 class="mb-4">Bank Details</h4>
+                                <div class="alert alert-warning" id="noBankDetailsAlert">
+                                    <i class="fas fa-exclamation-triangle me-2"></i> You need to add your bank details to withdraw your earnings.
+                                </div>
+                                <form id="bankDetailsForm" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Account Holder Name</label>
+                                            <input type="text" class="form-control" id="accountHolderName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Account Number</label>
+                                            <input type="text" class="form-control" id="accountNumber" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Bank Name</label>
+                                            <input type="text" class="form-control" id="bankName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">IFSC Code</label>
+                                            <input type="text" class="form-control" id="ifscCode" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Branch Name</label>
+                                            <input type="text" class="form-control" id="branchName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Account Type</label>
+                                            <select class="form-select" id="accountType" required>
+                                                <option value="">Select Account Type</option>
+                                                <option value="savings">Savings</option>
+                                                <option value="current">Current</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary">Save Bank Details</button>
+                                    </div>
+                                </form>
+                                <div class="card mt-4" id="bankDetailsCard" style="
