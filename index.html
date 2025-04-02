@@ -124,42 +124,80 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#" id="homeLink">DataEntryPro</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto logged-out-only">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#how-it-works">How It Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#demo">Demo</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto logged-in-only">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="dashboardNavLink">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="startWorkNavLink">Start Work</a>
-                    </li>
-                </ul>
-                <div class="d-flex" id="authButtons">
-                    <button class="btn btn-outline-light me-2 logged-out-only" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                    <button class="btn btn-primary logged-out-only" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-                    <div class="d-flex logged-in-only" id="userSection">
-                    <button class="btn btn-danger" id="logoutBtn">Logout</button>
-                    </div>
+<!-- In the navigation section (remove logout button from main nav) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#" id="homeLink">DataEntryPro</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto logged-out-only">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how-it-works">How It Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pricing">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#demo">Demo</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto logged-in-only">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="dashboardNavLink">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="startWorkNavLink">Start Work</a>
+                </li>
+            </ul>
+            <div class="d-flex" id="authButtons">
+                <button class="btn btn-outline-light me-2 logged-out-only" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                <button class="btn btn-primary logged-out-only" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                <div class="d-flex logged-in-only" id="userSection">
+                    <span class="navbar-text me-3">Welcome, <span id="usernameDisplay">User</span></span>
                 </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- In the dashboard sidebar (add logout button here) -->
+<div class="col-md-3 col-lg-2 dashboard-sidebar p-0">
+    <div class="p-4">
+        <div class="text-center mb-4">
+            <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" alt="Profile">
+            <h5 id="dashboardUsername">John Doe</h5>
+            <p class="text-white-50 small" id="userPlanDisplay">Free Plan</p>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active text-white" href="#" data-section="dashboard"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="startWork"><i class="fas fa-keyboard me-2"></i> Start Work</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="wallet"><i class="fas fa-wallet me-2"></i> Wallet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="bankDetails"><i class="fas fa-university me-2"></i> Bank Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="withdrawals"><i class="fas fa-money-bill-wave me-2"></i> Withdrawals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" data-section="referrals"><i class="fas fa-user-friends me-2"></i> Referrals</a>
+            </li>
+            <li class="nav-item mt-3">
+                <button class="btn btn-danger w-100" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
+            </li>
+        </ul>
+    </div>
+</div>
             </div>
         </div>
     </nav>
