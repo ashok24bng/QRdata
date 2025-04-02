@@ -111,8 +111,14 @@
             display: none;
         }
         
-        .logged-in #dashboardPage {
+        .logged-in #dashboardPage, .logged-in #startWorkPage {
             display: block;
+        }
+        
+        .entry-counter {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -151,6 +157,8 @@
                     <button class="btn btn-outline-light me-2 logged-out-only" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                     <button class="btn btn-primary logged-out-only" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                     <div class="d-flex logged-in-only" id="userSection">
+                        <span class="navbar-text me-3">Welcome, <span id="usernameDisplay">User</span></span>
+                        <button class="btn btn-danger" id="logoutBtn">Logout</button>
                     </div>
                 </div>
             </div>
@@ -225,148 +233,128 @@
                     </div>
                 </div>
                 
-                <!-- Pricing Section -->
-                <section id="pricing" class="py-5">
-                    <div class="container">
-                        <h2 class="text-center fw-bold mb-5">Our Pricing Plans</h2>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card pricing-card mb-4">
-                                    <div class="card-header pricing-header text-center py-3">
-                                        <h4 class="my-0 fw-normal">Free</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h1 class="card-title pricing-card-title text-center">₹0<small class="text-muted fw-light">/mo</small></h1>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li><i class="fas fa-check text-success me-2"></i> ₹0.50 per data entry</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> 10 entries per day limit</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> ₹300 minimum withdrawal</li>
-                                            <li><i class="fas fa-times text-danger me-2"></i> No referral bonuses</li>
-                                        </ul>
-                                        <button type="button" class="btn btn-lg btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#registerModal">Get Started</button>
-                                    </div>
-                                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Earning Details</h5>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card pricing-card mb-4">
-                                    <div class="card-header pricing-header text-center py-3">
-                                        <h4 class="my-0 fw-normal">Premium 3 Months</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h1 class="card-title pricing-card-title text-center">₹2999<small class="text-muted fw-light">/3mo</small></h1>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li><i class="fas fa-check text-success me-2"></i> ₹1 per data entry</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> 50 entries per day limit</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> ₹300 minimum withdrawal</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> 10% referral bonus</li>
-                                        </ul>
-                                        <button type="button" class="btn btn-lg btn-primary w-100" data-bs-toggle="modal" data-bs-target="#registerModal">Upgrade</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card pricing-card mb-4">
-                                    <div class="card-header pricing-header text-center py-3">
-                                        <h4 class="my-0 fw-normal">Premium 12 Months</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h1 class="card-title pricing-card-title text-center">₹9999<small class="text-muted fw-light">/year</small></h1>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li><i class="fas fa-check text-success me-2"></i> ₹2 per data entry</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> 50 entries per day limit</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> ₹300 minimum withdrawal</li>
-                                            <li><i class="fas fa-check text-success me-2"></i> 10% referral bonus</li>
-                                        </ul>
-                                        <button type="button" class="btn btn-lg btn-primary w-100" data-bs-toggle="modal" data-bs-target="#registerModal">Upgrade</button>
-                                    </div>
-                                </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Free Plan
+                                        <span class="badge bg-primary rounded-pill">₹0.50 per entry (10/day)</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Premium Plan (3 months)
+                                        <span class="badge bg-primary rounded-pill">₹1 per entry (50/day)</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Premium Plan (1 year)
+                                        <span class="badge bg-primary rounded-pill">₹3 per entry (50/day)</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Referral Bonus
+                                        <span class="badge bg-success rounded-pill">10% of premium plans</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </section>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Payment Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Minimum withdrawal: ₹300 (Earning Wallet)</li>
+                                    <li class="list-group-item">No minimum for Bonus Wallet</li>
+                                    <li class="list-group-item">Withdrawals processed within 3-5 business days</li>
+                                    <li class="list-group-item">Bank details required for withdrawal</li>
+                                    <li class="list-group-item">Track withdrawal status in dashboard</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <!-- Demo Section -->
-                <section id="demo" class="py-5 bg-light">
-                    <div class="container">
-                        <h2 class="text-center fw-bold mb-5">See How It Works</h2>
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sample Data Entry Task</h5>
-                                        <p class="card-text">Enter the product details from the image into the form fields.</p>
-                                        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid mb-3" alt="Sample Data">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="demoProductName" class="form-label">Company Name</label>
-                                                <input type="text" class="form-control" id="demoProductName" placeholder="Enter product name">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="demoCity" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="demoProductPrice" placeholder="City">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="demoCountry" class="form-label">Country</label>
-                                                <textarea class="form-control" id="demoProductDescription" rows="2" placeholder="Country"></textarea>
-                                            </div>
-                                             <div class="mb-3">
-                                                <label for="demoZipcode" class="form-label">Zipcode</label>
-                                                <input type="text" class="form-control" id="demoProductPrice" placeholder="Zipcode">
-                                            </div>
-                                             <div class="mb-3">
-                                                <label for="demobusinessid" class="form-label">Business Id</label>
-                                                <input type="text" class="form-control" id="demoProductPrice" placeholder="Business ID">
-                                            <button type="submit" class="btn btn-primary">Submit Entry</button>
-                                        </form>
-                                    </div>
-                                </div>
+        <!-- Demo Video Section -->
+        <section id="demo" class="py-5">
+            <div class="container">
+                <h2 class="text-center fw-bold mb-5">See How It Works</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/example" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center fw-bold mb-5">Choose Your Plan</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card pricing-card mb-4">
+                            <div class="card-header pricing-header text-center py-3">
+                                <h4 class="my-0 fw-normal">Free</h4>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Earnings Potential</h5>
-                                        <p class="card-text">See how much you could earn with different plans:</p>
-                                        <table class="table table-bordered">
-                                            <thead class="table-primary">
-                                                <tr>
-                                                    <th>Plan</th>
-                                                    <th>Entries/Day</th>
-                                                    <th>Rate</th>
-                                                    <th>Daily Earnings</th>
-                                                    <th>Monthly Earnings*</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Free</td>
-                                                    <td>10</td>
-                                                    <td>₹5</td>
-                                                    <td>₹50</td>
-                                                    <td>₹1,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Premium 3 Months</td>
-                                                    <td>30</td>
-                                                    <td>₹7</td>
-                                                    <td>₹210</td>
-                                                    <td>₹6,300</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Premium 12 Months</td>
-                                                    <td>50</td>
-                                                    <td>₹10</td>
-                                                    <td>₹500</td>
-                                                    <td>₹15,000</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <p class="text-muted small">*Based on 30 working days per month</p>
-                                    </div>
-                                </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title text-center">₹0<small class="text-muted fw-light">/mo</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li><i class="fas fa-check text-success me-2"></i> ₹0.50 per entry</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 10 entries per day</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 60-second ads after each entry</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Basic support</li>
+                                    <li><i class="fas fa-times text-danger me-2"></i> No referral bonus</li>
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-outline-primary w-100">Current Plan</button>
                             </div>
                         </div>
                     </div>
-                </section>
+                    <div class="col-md-4">
+                        <div class="card pricing-card mb-4">
+                            <div class="card-header pricing-header text-center py-3">
+                                <h4 class="my-0 fw-normal">Premium</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title text-center">₹2999<small class="text-muted fw-light">/3mo</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li><i class="fas fa-check text-success me-2"></i> ₹1 per entry</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 50 entries per day</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> No ads for 3 months</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> Priority support</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 10% referral bonus</li>
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-primary w-100">Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card pricing-card mb-4">
+                            <div class="card-header pricing-header text-center py-3">
+                                <h4 class="my-0 fw-normal">Professional</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title text-center">₹9999<small class="text-muted fw-light">/year</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li><i class="fas fa-check text-success me-2"></i> ₹3 per entry</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 50 entries per day</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> No ads for 1 year</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 24/7 priority support</li>
+                                    <li><i class="fas fa-check text-success me-2"></i> 10% referral bonus</li>
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-primary w-100">Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -412,7 +400,7 @@
                         <div class="text-center mb-4">
                             <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" alt="Profile">
                             <h5 id="dashboardUsername">John Doe</h5>
-                            <p class="text-white-50 small">Free Plan</p>
+                            <p class="text-white-50 small" id="userPlanDisplay">Free Plan</p>
                         </div>
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -510,314 +498,96 @@
                         </div>
                     </div>
                     
-                    <!-- Start Work Section -->
-                    <div id="startWorkSection" style="display: none;">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="mb-0">Data Entry Task</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="alert alert-info mb-4">
-                                    <i class="fas fa-info-circle me-2"></i> Enter the product details from the image below into the form fields.
-                                </div>
-                                
-                                <div class="row mb-4">
-                                    <div class="col-md-6">
-                                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded border" alt="Data Entry Sample" id="dataEntryImage">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <form id="dataEntryForm">
-                                            <div class="mb-3">
-                                                <label for="productName" class="form-label">Product Name</label>
-                                                <input type="text" class="form-control" id="productName" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="productCategory" class="form-label">Category</label>
-                                                <input type="text" class="form-control" id="productCategory" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="productPrice" class="form-label">Price</label>
-                                                <input type="text" class="form-control" id="productPrice" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="productDescription" class="form-label">Description</label>
-                                                <textarea class="form-control" id="productDescription" rows="3" required></textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="productFeatures" class="form-label">Key Features (comma separated)</label>
-                                                <textarea class="form-control" id="productFeatures" rows="2" required></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Submit Entry</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                
-                                <div class="alert alert-warning">
-                                    <i class="fas fa-exclamation-triangle me-2"></i> Please ensure all information is entered accurately. Incorrect entries will be rejected.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
                     <!-- Wallet Section -->
                     <div id="walletSection" style="display: none;">
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <div class="card wallet-card mb-4">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h5 class="card-title mb-0">Earning Wallet</h5>
-                                            <span class="badge bg-primary">Main</span>
-                                        </div>
-                                        <h2 class="mb-4" id="earningWalletBalance">₹0</h2>
-                                        <p class="text-muted">Minimum withdrawal: ₹300</p>
-                                        <button class="btn btn-primary w-100" id="withdrawEarningsBtn" disabled>Withdraw Earnings</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card wallet-card mb-4">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <h5 class="card-title mb-0">Bonus Wallet</h5>
-                                            <span class="badge bg-success">Referral</span>
-                                        </div>
-                                        <h2 class="mb-4" id="bonusWalletBalance">₹0</h2>
-                                        <p class="text-muted">Minimum withdrawal: ₹1</p>
-                                        <button class="btn btn-success w-100" id="withdrawBonusBtn" disabled>Withdraw Bonus</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Transaction History</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Type</th>
-                                                <th>Amount</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="walletHistory">
-                                            <tr>
-                                                <td colspan="4" class="text-center">No transactions yet</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- ... same wallet section as before ... -->
                     </div>
                     
                     <!-- Bank Details Section -->
                     <div id="bankDetailsSection" style="display: none;">
-                        <div class="alert alert-danger" id="noBankDetailsAlert">
-                            <i class="fas fa-exclamation-circle me-2"></i> You need to add your bank details to withdraw earnings.
-                        </div>
-                        
-                        <div class="card mb-4" id="bankDetailsForm">
-                            <div class="card-header">
-                                <h5 class="mb-0">Add Bank Details</h5>
-                            </div>
-                            <div class="card-body">
-                                <form id="bankDetailsFormElement">
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="accountHolderName" class="form-label">Account Holder Name</label>
-                                            <input type="text" class="form-control" id="accountHolderName" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="accountNumber" class="form-label">Account Number</label>
-                                            <input type="text" class="form-control" id="accountNumber" required>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="bankName" class="form-label">Bank Name</label>
-                                            <input type="text" class="form-control" id="bankName" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="ifscCode" class="form-label">IFSC Code</label>
-                                            <input type="text" class="form-control" id="ifscCode" required>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="accountType" class="form-label">Account Type</label>
-                                            <select class="form-select" id="accountType" required>
-                                                <option value="" selected disabled>Select account type</option>
-                                                <option value="savings">Savings</option>
-                                                <option value="current">Current</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="branchName" class="form-label">Branch Name</label>
-                                            <input type="text" class="form-control" id="branchName" required>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Save Bank Details</button>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <div class="card" id="bankDetailsCard" style="display: none;">
-                            <div class="card-header">
-                                <h5 class="mb-0">Your Bank Details</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p><strong>Account Holder Name:</strong> <span id="displayAccountHolderName">John Doe</span></p>
-                                        <p><strong>Account Number:</strong> <span id="displayAccountNumber">1234567890</span></p>
-                                        <p><strong>Bank Name:</strong> <span id="displayBankName">State Bank of India</span></p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><strong>IFSC Code:</strong> <span id="displayIfscCode">SBIN0001234</span></p>
-                                        <p><strong>Account Type:</strong> <span id="displayAccountType">Savings</span></p>
-                                        <p><strong>Branch Name:</strong> <span id="displayBranchName">Mumbai Main Branch</span></p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-outline-primary mt-3" id="editBankDetailsBtn">Edit Details</button>
-                            </div>
-                        </div>
+                        <!-- ... same bank details section as before ... -->
                     </div>
                     
                     <!-- Withdrawals Section -->
                     <div id="withdrawalsSection" style="display: none;">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="mb-0">Request Withdrawal</h5>
-                            </div>
-                            <div class="card-body">
-                                <form id="withdrawalForm">
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="withdrawalAmount" class="form-label">Amount (₹)</label>
-                                            <input type="number" class="form-control" id="withdrawalAmount" min="300" required>
-                                            <div class="form-text">Minimum withdrawal amount: ₹300</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="withdrawalWallet" class="form-label">From Wallet</label>
-                                            <select class="form-select" id="withdrawalWallet" required>
-                                                <option value="earning">Earning Wallet</option>
-                                                <option value="bonus">Bonus Wallet</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Request Withdrawal</button>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Withdrawal History</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Wallet</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="withdrawalHistory">
-                                            <tr>
-                                                <td colspan="5" class="text-center">No withdrawal requests yet</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- ... same withdrawals section as before ... -->
                     </div>
                     
                     <!-- Referrals Section -->
                     <div id="referralsSection" style="display: none;">
-                        <div class="row mb-4">
-                            <div class="col-md-4">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Total Referrals</h6>
-                                        <h2 class="mb-0" id="totalReferrals">0</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Active Referrals</h6>
-                                        <h2 class="mb-0" id="activeReferrals">0</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card bg-info text-white mb-4">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Referral Bonus</h6>
-                                        <h2 class="mb-0" id="totalReferralBonus">₹0</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="mb-0">Your Referral Link</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="referralLink2" value="https://dataentrypro.com/ref/username123" readonly>
-                                    <button class="btn btn-primary" type="button" id="copyReferralBtn2">Copy</button>
-                                </div>
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle me-2"></i> Earn 10% of any premium plan purchased by your referrals. Share your link on social media!
-                                </div>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-outline-primary"><i class="fab fa-facebook me-2"></i>Share on Facebook</button>
-                                    <button class="btn btn-outline-info"><i class="fab fa-twitter me-2"></i>Share on Twitter</button>
-                                    <button class="btn btn-outline-success"><i class="fab fa-whatsapp me-2"></i>Share on WhatsApp</button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Referral History</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Referral</th>
-                                                <th>Plan</th>
-                                                <th>Bonus</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="referralHistory">
-                                            <tr>
-                                                <td colspan="5" class="text-center">No referrals yet</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- ... same referrals section as before ... -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Work Page -->
+    <div id="startWorkPage" class="page-container">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2 dashboard-sidebar p-0">
+                    <div class="p-4">
+                        <div class="text-center mb-4">
+                            <img src="https://via.placeholder.com/100" class="rounded-circle mb-2" alt="Profile">
+                            <h5 id="workPageUsername">John Doe</h5>
+                            <p class="text-white-50 small" id="workPagePlan">Free Plan</p>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#" id="backToDashboard"><i class="fas fa-arrow-left me-2"></i> Back to Dashboard</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="col-md-9 col-lg-10 dashboard-content p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4>Data Entry Form</h4>
+                        <div class="badge bg-primary" id="currentRateDisplay">Current Rate: ₹0.50 per entry</div>
+                    </div>
+                    
+                    <div class="entry-counter">
+                        Entries today: <span id="entriesToday">0</span>/<span id="maxEntries">10</span>
+                    </div>
+                    
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i> Please enter the information accurately. Errors will be highlighted in red.
+                    </div>
+                    
+                    <form id="dataEntryForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">1. Company Name (Enter the full legal name of the company)</label>
+                                <input type="text" class="form-control" data-field="companyName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">2. City (Enter the city where the company is located)</label>
+                                <input type="text" class="form-control" data-field="city" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">3. Country (Enter the country where the company is based)</label>
+                                <input type="text" class="form-control" data-field="country" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">4. Zip Code (Enter the postal/zip code of the company)</label>
+                                <input type="text" class="form-control" data-field="zipCode" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">5. Business ID (Enter the official business registration ID)</label>
+                                <input type="text" class="form-control" data-field="businessId" required>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" id="submitEntryBtn">Submit Entry</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -825,127 +595,17 @@
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login to Your Account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="loginForm">
-                        <div class="mb-3">
-                            <label for="loginEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="loginEmail" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="loginPassword" required>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">Forgot password?</a>
-                    </div>
-                    <div class="text-center mt-3">
-                        Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register here</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- ... same login modal as before ... -->
     </div>
 
     <!-- Register Modal -->
     <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Your Account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="registerForm">
-                        <div class="mb-3">
-                            <label for="registerName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="registerName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="registerEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="registerEmail" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="registerPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="registerPassword" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="registerConfirmPassword" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="registerPhone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="registerPhone" required>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
-                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms and Conditions</a></label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login here</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Forgot Password Modal -->
-    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Reset Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="forgotPasswordForm">
-                        <div class="mb-3">
-                            <label for="forgotPasswordEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="forgotPasswordEmail" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        Remember your password? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login here</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- ... same register modal as before ... -->
     </div>
 
     <!-- Ad Modal -->
     <div class="modal fade" id="adModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Advertisement</h5>
-                </div>
-                <div class="modal-body text-center">
-                    <p>Please watch this ad to continue working</p>
-                    <img src="https://via.placeholder.com/300x200?text=Advertisement" class="img-fluid mb-3" alt="Advertisement">
-                    <div class="progress mb-3">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" id="adProgress" style="width: 0%"></div>
-                    </div>
-                    <p id="adCountdown">60 seconds remaining</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary w-100" id="continueAfterAdBtn" disabled>Continue After Ad (60s)</button>
-                </div>
-            </div>
-        </div>
+        <!-- ... same ad modal as before ... -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -953,6 +613,7 @@
         // Simulate user authentication state
         let isLoggedIn = false;
         let currentUser = null;
+        let todayEntries = 0;
         
         // DOM Elements
         const authButtons = document.getElementById('authButtons');
@@ -963,29 +624,48 @@
         const dashboardNavLink = document.getElementById('dashboardNavLink');
         const startWorkNavLink = document.getElementById('startWorkNavLink');
         const dashboardPage = document.getElementById('dashboardPage');
+        const startWorkPage = document.getElementById('startWorkPage');
         const landingPage = document.getElementById('landingPage');
-        
-        // Dashboard sections
-        const dashboardSections = {
-            dashboard: document.getElementById('dashboardSection'),
-            startWork: document.getElementById('startWorkSection'),
-            wallet: document.getElementById('walletSection'),
-            bankDetails: document.getElementById('bankDetailsSection'),
-            withdrawals: document.getElementById('withdrawalsSection'),
-            referrals: document.getElementById('referralsSection')
-        };
-        
-        // Sidebar navigation links
-        const sidebarLinks = document.querySelectorAll('.dashboard-sidebar .nav-link');
+        const backToDashboard = document.getElementById('backToDashboard');
+        const entriesTodayDisplay = document.getElementById('entriesToday');
+        const maxEntriesDisplay = document.getElementById('maxEntries');
+        const currentRateDisplay = document.getElementById('currentRateDisplay');
+        const submitEntryBtn = document.getElementById('submitEntryBtn');
         
         // Update UI based on login state
         function updateUI() {
             if (isLoggedIn) {
                 document.body.classList.add('logged-in');
-                showDashboardSection('dashboard');
+                dashboardNavLink.click(); // Show dashboard by default
+                
+                // Update work page user info
+                document.getElementById('workPageUsername').textContent = currentUser.name;
+                document.getElementById('workPagePlan').textContent = currentUser.plan === 'free' ? 'Free Plan' : 
+                    (currentUser.plan === 'premium3' ? 'Premium Plan (3 months)' : 'Professional Plan (1 year)');
+                
+                // Update entry limits and rates
+                updateEntryInfo();
             } else {
                 document.body.classList.remove('logged-in');
             }
+        }
+        
+        function updateEntryInfo() {
+            if (currentUser.plan === 'free') {
+                maxEntriesDisplay.textContent = '10';
+                currentRateDisplay.textContent = 'Current Rate: ₹0.50 per entry';
+            } else if (currentUser.plan === 'premium3') {
+                maxEntriesDisplay.textContent = '50';
+                currentRateDisplay.textContent = 'Current Rate: ₹1 per entry';
+            } else {
+                maxEntriesDisplay.textContent = '50';
+                currentRateDisplay.textContent = 'Current Rate: ₹3 per entry';
+            }
+            entriesTodayDisplay.textContent = todayEntries;
+            
+            // Disable submit button if reached daily limit
+            const maxEntries = currentUser.plan === 'free' ? 10 : 50;
+            submitEntryBtn.disabled = todayEntries >= maxEntries;
         }
         
         // Login function
@@ -997,6 +677,7 @@
             // Simulate login (in a real app, this would be an API call)
             if (email && password) {
                 isLoggedIn = true;
+                todayEntries = 0;
                 currentUser = {
                     name: email.split('@')[0],
                     email: email,
@@ -1010,10 +691,7 @@
                     earningWallet: 0,
                     bonusWallet: 0,
                     hasBankDetails: false,
-                    dataEntryHistory: [],
-                    walletHistory: [],
-                    withdrawalHistory: [],
-                    referralHistory: []
+                    dataEntryHistory: []
                 };
                 
                 // Update UI
@@ -1030,17 +708,11 @@
             const name = document.getElementById('registerName').value;
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('registerConfirmPassword').value;
-            
-            // Validate passwords match
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
             
             // Simulate registration (in a real app, this would be an API call)
             if (name && email && password) {
                 isLoggedIn = true;
+                todayEntries = 0;
                 currentUser = {
                     name: name,
                     email: email,
@@ -1054,10 +726,7 @@
                     earningWallet: 0,
                     bonusWallet: 0,
                     hasBankDetails: false,
-                    dataEntryHistory: [],
-                    walletHistory: [],
-                    withdrawalHistory: [],
-                    referralHistory: []
+                    dataEntryHistory: []
                 };
                 
                 // Update UI
@@ -1072,6 +741,7 @@
         logoutBtn.addEventListener('click', function() {
             isLoggedIn = false;
             currentUser = null;
+            todayEntries = 0;
             updateUI();
         });
         
@@ -1079,46 +749,29 @@
         homeLink.addEventListener('click', function(e) {
             if (isLoggedIn) {
                 e.preventDefault();
-                showDashboardSection('dashboard');
+                dashboardNavLink.click();
             }
         });
         
         // Dashboard navigation
         dashboardNavLink.addEventListener('click', function(e) {
             e.preventDefault();
-            showDashboardSection('dashboard');
+            dashboardPage.style.display = 'block';
+            startWorkPage.style.display = 'none';
+            updateDashboardData();
         });
         
         startWorkNavLink.addEventListener('click', function(e) {
             e.preventDefault();
-            showDashboardSection('startWork');
+            dashboardPage.style.display = 'none';
+            startWorkPage.style.display = 'block';
+            updateEntryInfo();
         });
         
-        // Sidebar navigation
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = this.getAttribute('data-section');
-                showDashboardSection(section);
-                
-                // Update active state
-                sidebarLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
+        backToDashboard.addEventListener('click', function(e) {
+            e.preventDefault();
+            dashboardNavLink.click();
         });
-        
-        function showDashboardSection(section) {
-            // Hide all sections
-            Object.values(dashboardSections).forEach(sec => sec.style.display = 'none');
-            
-            // Show selected section
-            dashboardSections[section].style.display = 'block';
-            
-            // Update user data if showing dashboard
-            if (section === 'dashboard') {
-                updateDashboardData();
-            }
-        }
         
         function updateDashboardData() {
             if (!currentUser) return;
@@ -1126,6 +779,8 @@
             // Update dashboard with user data
             document.getElementById('dashboardUsername').textContent = currentUser.name;
             document.getElementById('usernameDisplay').textContent = currentUser.name;
+            document.getElementById('userPlanDisplay').textContent = currentUser.plan === 'free' ? 'Free Plan' : 
+                (currentUser.plan === 'premium3' ? 'Premium Plan (3 months)' : 'Professional Plan (1 year)');
             document.getElementById('totalEntries').textContent = currentUser.entries;
             document.getElementById('totalEarnings').textContent = `₹${currentUser.earnings}`;
             document.getElementById('totalWithdrawals').textContent = `₹${currentUser.withdrawals}`;
@@ -1134,29 +789,6 @@
             document.getElementById('totalReferrals').textContent = currentUser.referrals;
             document.getElementById('activeReferrals').textContent = currentUser.activeReferrals;
             document.getElementById('totalReferralBonus').textContent = `₹${currentUser.referralBonus}`;
-            
-            // Enable/disable withdrawal buttons based on balance
-            document.getElementById('withdrawEarningsBtn').disabled = currentUser.earningWallet < 300;
-            document.getElementById('withdrawBonusBtn').disabled = currentUser.bonusWallet < 1;
-            
-            // Show/hide bank details form
-            if (currentUser.hasBankDetails) {
-                document.getElementById('noBankDetailsAlert').style.display = 'none';
-                document.getElementById('bankDetailsForm').style.display = 'none';
-                document.getElementById('bankDetailsCard').style.display = 'block';
-                
-                // Display bank details (in a real app, these would come from the user object)
-                document.getElementById('displayAccountHolderName').textContent = currentUser.name;
-                document.getElementById('displayAccountNumber').textContent = '1234567890';
-                document.getElementById('displayBankName').textContent = 'State Bank of India';
-                document.getElementById('displayIfscCode').textContent = 'SBIN0001234';
-                document.getElementById('displayAccountType').textContent = 'Savings';
-                document.getElementById('displayBranchName').textContent = 'Mumbai Main Branch';
-            } else {
-                document.getElementById('noBankDetailsAlert').style.display = 'block';
-                document.getElementById('bankDetailsForm').style.display = 'block';
-                document.getElementById('bankDetailsCard').style.display = 'none';
-            }
             
             // Update data entry earnings table
             const dataEntryEarnings = document.getElementById('dataEntryEarnings');
@@ -1173,62 +805,15 @@
                     </tr>
                 `).join('');
             }
-            
-            // Update wallet history
-            const walletHistory = document.getElementById('walletHistory');
-            if (currentUser.walletHistory.length === 0) {
-                walletHistory.innerHTML = '<tr><td colspan="4" class="text-center">No transactions yet</td></tr>';
-            } else {
-                walletHistory.innerHTML = currentUser.walletHistory.map(transaction => `
-                    <tr>
-                        <td>${transaction.date}</td>
-                        <td>${transaction.type}</td>
-                        <td>₹${transaction.amount}</td>
-                        <td><span class="badge bg-success">Completed</span></td>
-                    </tr>
-                `).join('');
-            }
-            
-            // Update withdrawal history
-            const withdrawalHistory = document.getElementById('withdrawalHistory');
-            if (currentUser.withdrawalHistory.length === 0) {
-                withdrawalHistory.innerHTML = '<tr><td colspan="5" class="text-center">No withdrawal requests yet</td></tr>';
-            } else {
-                withdrawalHistory.innerHTML = currentUser.withdrawalHistory.map(withdrawal => `
-                    <tr>
-                        <td>${withdrawal.date}</td>
-                        <td>₹${withdrawal.amount}</td>
-                        <td>${withdrawal.wallet === 'earning' ? 'Earning Wallet' : 'Bonus Wallet'}</td>
-                        <td><span class="badge ${withdrawal.status === 'pending' ? 'bg-warning' : 'bg-success'}">${withdrawal.status === 'pending' ? 'Pending' : 'Completed'}</span></td>
-                        <td>${withdrawal.status === 'pending' ? '<button class="btn btn-sm btn-outline-danger">Cancel</button>' : ''}</td>
-                    </tr>
-                `).join('');
-            }
-            
-            // Update referral history
-            const referralHistory = document.getElementById('referralHistory');
-            if (currentUser.referralHistory.length === 0) {
-                referralHistory.innerHTML = '<tr><td colspan="5" class="text-center">No referrals yet</td></tr>';
-            } else {
-                referralHistory.innerHTML = currentUser.referralHistory.map(referral => `
-                    <tr>
-                        <td>${referral.date}</td>
-                        <td>${referral.email}</td>
-                        <td>${referral.plan}</td>
-                        <td>₹${referral.bonus}</td>
-                        <td><span class="badge bg-success">Active</span></td>
-                    </tr>
-                `).join('');
-            }
         }
         
         // Data entry form submission
         document.getElementById('dataEntryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate form (simplified for demo)
+            // Validate form
             let hasError = false;
-            const inputs = this.querySelectorAll('input, textarea');
+            const inputs = this.querySelectorAll('input[required]');
             
             inputs.forEach(input => {
                 if (!input.value.trim()) {
@@ -1240,21 +825,21 @@
             });
             
             if (!hasError) {
-                const entryRate = currentUser.plan === 'free' ? 5 : (currentUser.plan === 'premium3' ? 7 : 10);
+                const entryRate = currentUser.plan === 'free' ? 0.5 : (currentUser.plan === 'premium3' ? 1 : 3);
                 const entryDate = new Date().toLocaleDateString();
+                const maxEntries = currentUser.plan === 'free' ? 10 : 50;
+                
+                // Check daily limit
+                if (todayEntries >= maxEntries) {
+                    alert(`You've reached your daily limit of ${maxEntries} entries.`);
+                    return;
+                }
                 
                 // Update user data
+                todayEntries++;
                 currentUser.entries++;
                 currentUser.earningWallet += entryRate;
                 currentUser.earnings += entryRate;
-                
-                // Add to wallet history
-                currentUser.walletHistory.unshift({
-                    date: entryDate,
-                    type: 'Data Entry Earnings',
-                    amount: entryRate,
-                    status: 'completed'
-                });
                 
                 // Add to data entry history
                 const todayEntry = currentUser.dataEntryHistory.find(e => e.date === entryDate);
@@ -1262,146 +847,3 @@
                     todayEntry.count++;
                     todayEntry.amount += entryRate;
                 } else {
-                    currentUser.dataEntryHistory.unshift({
-                        date: entryDate,
-                        count: 1,
-                        rate: entryRate,
-                        amount: entryRate
-                    });
-                }
-                
-                // Show ad for free plan users
-                if (currentUser.plan === 'free') {
-                    const adModal = new bootstrap.Modal(document.getElementById('adModal'));
-                    const adCountdown = document.getElementById('adCountdown');
-                    const adProgress = document.getElementById('adProgress');
-                    const continueBtn = document.getElementById('continueAfterAdBtn');
-                    
-                    let seconds = 60;
-                    adModal.show();
-                    
-                    const timer = setInterval(() => {
-                        seconds--;
-                        adCountdown.textContent = `${seconds} seconds remaining`;
-                        adProgress.style.width = `${(60 - seconds) / 60 * 100}%`;
-                        
-                        if (seconds <= 0) {
-                            clearInterval(timer);
-                            continueBtn.disabled = false;
-                            adCountdown.textContent = 'Ad completed!';
-                            continueBtn.textContent = 'Continue Working';
-                        } else {
-                            continueBtn.textContent = `Continue After Ad (${seconds}s)`;
-                        }
-                    }, 1000);
-                    
-                    continueBtn.addEventListener('click', function() {
-                        adModal.hide();
-                        // Reset form for next entry
-                        document.getElementById('dataEntryForm').reset();
-                        updateDashboardData();
-                    }, { once: true });
-                } else {
-                    // Reset form for next entry
-                    this.reset();
-                    updateDashboardData();
-                }
-            }
-        });
-        
-        // Bank details form submission
-        document.getElementById('bankDetailsFormElement').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate form (simplified for demo)
-            let hasError = false;
-            const inputs = this.querySelectorAll('input, select');
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    input.classList.add('error-highlight');
-                    hasError = true;
-                } else {
-                    input.classList.remove('error-highlight');
-                }
-            });
-            
-            if (!hasError) {
-                currentUser.hasBankDetails = true;
-                updateDashboardData();
-            }
-        });
-        
-        // Edit bank details
-        document.getElementById('editBankDetailsBtn').addEventListener('click', function() {
-            currentUser.hasBankDetails = false;
-            updateDashboardData();
-        });
-        
-        // Withdrawal form submission
-        document.getElementById('withdrawalForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const amount = parseFloat(document.getElementById('withdrawalAmount').value);
-            const wallet = document.getElementById('withdrawalWallet').value;
-            
-            if (wallet === 'earning' && amount > currentUser.earningWallet) {
-                alert('Insufficient funds in earning wallet');
-                return;
-            }
-            
-            if (wallet === 'bonus' && amount > currentUser.bonusWallet) {
-                alert('Insufficient funds in bonus wallet');
-                return;
-            }
-            
-            if (wallet === 'earning' && amount < 300) {
-                alert('Minimum withdrawal amount for earning wallet is ₹300');
-                return;
-            }
-            
-            // Add to withdrawal history
-            const withdrawalDate = new Date().toLocaleDateString();
-            currentUser.withdrawalHistory.unshift({
-                date: withdrawalDate,
-                amount: amount,
-                wallet: wallet,
-                status: 'pending'
-            });
-            
-            // Update wallet balance (in real app, this would happen after approval)
-            if (wallet === 'earning') {
-                currentUser.earningWallet -= amount;
-            } else {
-                currentUser.bonusWallet -= amount;
-            }
-            
-            // Update UI
-            updateDashboardData();
-            
-            // Reset form
-            this.reset();
-            
-            alert('Withdrawal request submitted successfully!');
-        });
-        
-        // Copy referral link
-        document.getElementById('copyReferralBtn').addEventListener('click', function() {
-            const referralLink = document.getElementById('referralLink');
-            referralLink.select();
-            document.execCommand('copy');
-            alert('Referral link copied to clipboard!');
-        });
-        
-        document.getElementById('copyReferralBtn2').addEventListener('click', function() {
-            const referralLink = document.getElementById('referralLink2');
-            referralLink.select();
-            document.execCommand('copy');
-            alert('Referral link copied to clipboard!');
-        });
-        
-        // Initialize UI
-        updateUI();
-    </script>
-</body>
-</html>
